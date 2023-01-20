@@ -1,8 +1,6 @@
 .home {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    height: 100vh;
+    background-color: #0B4F6C;
+    height: calc(100vh - 60px);
 }
 
 .center {
@@ -15,22 +13,23 @@
 
 .left-graphic {
     float: left;
-    width: 40%;
+    width: 45%;
     text-align: right;
     margin-top: 27vh;
-    /* width: 30%;
-    text-align: right; */
 }
 
 .right-intro {
     float: right;
     width: 50%;
     margin-top: 30vh;
-    /* align-items: center;
-    padding-left: 5px; */
 }
+
 .gray {
     color: rgb(70, 70, 70);
+}
+
+.white {
+    color: white;
 }
 
 .lg-font {

@@ -12,8 +12,8 @@ function Home() {
             </div>
             <div className='right-intro'>
                 <div className='center medium-width home-items'>
-                    <h1>Welcome to the Country News App!</h1>
-                    <p className='lg-font gray'>Explore the local news of countries around the world, and filter articles to find the one you want.</p>
+                    <h1 className='white'>Welcome to the Country News App!</h1>
+                    <p className='lg-font white'>Explore the local news of countries around the world, and filter articles to find the one you want.</p>
                     <Link to="/api">
                         <button className='button-filled'>Get Started</button>
                     </Link>
