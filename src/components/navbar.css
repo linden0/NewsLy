@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #0B4F6C;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-size: 25px;
+    font-weight: 900;
+    margin-left: calc(45vw - 350px);
+}
+
+.navitem {
+    color: white;
+    text-decoration: none;
+
+}
+
+.right-nav {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 15%;
+    margin-right: 30vw;
+}
