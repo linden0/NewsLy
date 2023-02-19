@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AutoComplete, Select } from 'antd';
 import "./search.css";
 import Input from 'antd/es/input/Input';
@@ -77,6 +78,26 @@ function Search() {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [error, setError] = useState("");
     const [articles, setArticles] = useState(null);
+    const location  = useLocation();
+    console.log(location);
+
+    if (countries.find((country) => country.key === location.state.name)) {
+      setSelectedCountry(location.state.data)
+    } 
+
+    
+    // const country_selected = countries.find((country) => country.key === location.state.name)
+
+    // useEffect(() => {
+    //   const country_selected = countries.find((country) => country.key === location.state.name)
+    //   setSelectedCountry(country_selected.ISO)
+    // }, [])
+          
+    // useEffect(() => {
+    //   const country_selected = countries.find((country) => country.key === location.state.name)
+    //   console.log(country_selected.key, location.state.name);
+    //   // setSelectedCountry(country_selected.key);
+    // });
 
     const handleKeywordChange = (event) => {
       setKeyword(event.target.value);
