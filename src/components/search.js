@@ -79,9 +79,11 @@ function Search() {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [error, setError] = useState("");
     const [articles, setArticles] = useState(null);
-    // this is the selected country from API.js. So here, you should first check if location.state is valid, and if it is
-    // aka the country was passed from API.js, you should set the state with setSelectedCountry, which btw should be iso, not name of country
-    console.log(location.state.data); // the selected country from api.js
+
+    if (location.state) {
+      console.log(location.state.data);
+      //location.state.data is the passed country, set the selectedCountry state here but make sure it's iso code, not name of country
+    }
 
     const handleKeywordChange = (event) => {
       setKeyword(event.target.value);
