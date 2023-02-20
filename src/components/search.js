@@ -73,31 +73,15 @@ const countries = [
 const APIKEY = "1ddefb4425654c06a39cd9dff53a36ff"
 
 function Search() {
+    const location = useLocation();
     const [keyword, setKeyword] = useState("");
     const [selectedCountry, setSelectedCountry] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
     const [error, setError] = useState("");
     const [articles, setArticles] = useState(null);
-    const location  = useLocation();
-    console.log(location);
-
-    if (countries.find((country) => country.key === location.state.name)) {
-      setSelectedCountry(location.state.data)
-    } 
-
-    
-    // const country_selected = countries.find((country) => country.key === location.state.name)
-
-    // useEffect(() => {
-    //   const country_selected = countries.find((country) => country.key === location.state.name)
-    //   setSelectedCountry(country_selected.ISO)
-    // }, [])
-          
-    // useEffect(() => {
-    //   const country_selected = countries.find((country) => country.key === location.state.name)
-    //   console.log(country_selected.key, location.state.name);
-    //   // setSelectedCountry(country_selected.key);
-    // });
+    // this is the selected country from API.js. So here, you should first check if location.state is valid, and if it is
+    // aka the country was passed from API.js, you should set the state with setSelectedCountry, which btw should be iso, not name of country
+    console.log(location.state.data); // the selected country from api.js
 
     const handleKeywordChange = (event) => {
       setKeyword(event.target.value);
