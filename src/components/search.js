@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { AutoCompvare, Select, Input } from 'antd';
+import { AutoComplete, Select, Input } from 'antd';
 import "./search.css";
 import countries from "./countries"
 
@@ -108,7 +108,7 @@ function Search() {
           onChange={handleKeywordChange}
         />
 
-        <AutoCompvare
+        <AutoComplete
             placeholder="Countries"
             id="countryInput"
             filterOption={(inputValue, option) =>
@@ -120,11 +120,11 @@ function Search() {
             value={selectedCountry}
         >
         {countries.map((country) => (
-          <AutoCompvare.Option key={country.ISO} value={country.key}>
+          <AutoComplete.Option key={country.ISO} value={country.key}>
             {country.key}
-          </AutoCompvare.Option>
+          </AutoComplete.Option>
         ))}
-        </AutoCompvare>
+        </AutoComplete>
 
         <Select
             options={categories}
