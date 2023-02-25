@@ -1,82 +1,93 @@
-import React, { useState, useEffect } from 'react';
-import './api.css'
-import countries from './countries'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { csv } from "d3-fetch";
+import { scaleLinear } from "d3-scale";
 import {
   ComposableMap,
   Geographies,
   Geography,
-  ZoomableGroup, 
-} from 'react-simple-maps';
-import { useNavigate } from 'react-router-dom';
-const geoUrl =   "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json"
+  Sphere,
+  Graticule
+} from "react-simple-maps";
+import countries from "./countries";
 
-//Map could also use some styling, currently the theme of the website and the map don't match
+// Map color settings
+const geoUrl = "/features.json";
 
-function API() { 
-  const [content, setContent] = useState("");
-  const [hoverCountry, setHoverCountry] = useState("Hovered State!")
-  let navigate = useNavigate();
+const colorScale = scaleLinear()
+  .domain([0.29, 0.68])
+  .range(["#f0f6fc", "#0B4F6C"]);
 
+function API() {
+  const [data, setData] = useState([]);
+  const [hoveredCountry, setHoveredCountry] = useState("‎"); //set to invisible character because empty string will remove hovered country tip, causing glitching
+  const navigate = useNavigate();
 
-  function handleClick() {
-    // This click function needs some preprocesing
-    //   1. You need to check if the selected country is available (not all countries are supported by API)
-    //     a. So you'll probably need access to the "countries" list in search.js. Copying it again to this file is bad code
-    //        so maybe you can put the list in an external file and import it to both API.js and Search.js
-    //     b. if country not available, you should send an alert to user via alert() or a custom dynamic error div like in Search.js
-    console.log(content)
-    var selected = countries.find((country) => country.key === content);
-    console.log(selected)
+  useEffect(() => {
+    csv(`/vulnerability.csv`).then((data) => {
+      setData(data);
+    });
+  }, []);
+
+  function handleClick(selectedCountry) {
+    console.log("Map Selection: ", selectedCountry);
+    var selected = countries.find((country) => country.key === selectedCountry);
     if (!selected) {
-      alert("Sorry, this country is not available yet");
+      alert("Sorry, this country is not available yet")
     } else {
-      navigate('/search', { state: { data: selected } });
+      navigate('/search', {state: { data: selected }})
     }
   }
 
-  const handleHover = (geo) => {
-    const NAME = geo.properties.name;
-    setHoverCountry(NAME);
-  };
-
   return (
-    <div className="map">
-      <div>
-        {hoverCountry}
-      </div>
-      <ComposableMap geography={geoUrl}>
-        <ZoomableGroup zoom={1}>{" "}
+    <div>
+      <p className="center">{hoveredCountry}</p>
+      <ComposableMap
+        projectionConfig={{
+          rotate: [-10, 0, 0],
+          scale: 147
+        }}
+        width={950}
+        height={415}
+
+      >
+        <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
+        <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
+        {data.length > 0 && (
           <Geographies geography={geoUrl}>
-              {({ geographies }) =>
-                geographies.map((geo) => (
+            {({ geographies }) =>
+              geographies.map((geo) => {
+                const d = data.find((s) => s.ISO3 === geo.id);
+                return (
                   <Geography
                     style={{
                       hover: {
-                        fill: "green",
+                        fill: "#0B4F6C",
                         outline: "none",
                       },
+                      pressed: {
+                        fill: "#D6D6DA",
+                        outline: "none" // disable outline
+                      },
+                      default: {
+                        outline: "none"
+                      }
                     }}
                     key={geo.rsmKey}
                     geography={geo}
-                    onMouseOver={() => handleHover(geo)}
-                    onMouseEnter={() => {
-                      const { name } = geo.properties;
-                      setContent(`${name}`);
-                    }}
-                    onMouseLeave={() =>{
-                      setContent("");
-                    }}
-                    onClick={handleClick}
-
+                    fill={d ? colorScale(d["2017"]) : "#F5F4F6"}
+                    onMouseOver={() => setHoveredCountry(geo.properties.name)}
+                    onMouseLeave={() => setHoveredCountry("‎")}
+                    onClick={() => handleClick(geo.properties.name)}
                   />
-                ))
-              }
-            </Geographies>
-
-          </ZoomableGroup>
+                );
+              })
+            }
+          </Geographies>
+        )}
       </ComposableMap>
     </div>
   );
-}
+};
 
 export default API;
