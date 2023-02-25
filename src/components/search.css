@@ -22,10 +22,14 @@
     width: 15%;
     border: none;
     color: white;
-    background-color: rgb(105, 105, 105);
+    background-color: rgb(172, 172, 172);
     border-radius: 5px;
     font-size: 16px;
 }
+.submit-btn:hover {
+    background-color: gray;   
+}
+
 
 .error {
     background-color: rgb(235, 186, 186);

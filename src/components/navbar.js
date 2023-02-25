@@ -11,7 +11,7 @@ function NavBar() {
                 </Link>
             </div>
             <div className='right-nav'>
-                <Link to="/API"  className='navitem'>API</Link>
+                <Link to="/api"  className='navitem'>API</Link>
                 <Link to="/search" className='navitem'>Search</Link>
                 <Link to="/about" className='navitem'>About</Link>
             </div>
