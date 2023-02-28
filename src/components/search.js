@@ -84,6 +84,7 @@ function Search() {
       fetch(APIURL)
         .then((response) => response.json())
         .then((data) => {
+          if (data.articles.length === 0) { setError("No Articles Found")}
           setArticles(data.articles);
         })
         .catch((error) => {

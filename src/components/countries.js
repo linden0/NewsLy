@@ -49,7 +49,7 @@ const countries = [
     { key: "Taiwan", ISO: "tw" },
     { key: "Ukraine", ISO: "ua" },
     { key: "United Arab Emirates", ISO: "ae" },
-    { key: "United States of America", ISO: "us" },
+    { key: "United States", ISO: "us" },
     { key: "Venezuela", ISO: "ve" },
     { key: "South Africa", ISO: "za" },
   ]
