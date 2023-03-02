@@ -84,6 +84,8 @@ function Search() {
       fetch(APIURL)
         .then((response) => response.json())
         .then((data) => {
+          if (data.articles.length === 0) { setError("No Articles Found")}
+          console.log((data.articles))
           setArticles(data.articles);
         })
         .catch((error) => {
@@ -141,7 +143,7 @@ function Search() {
         {!articles ? (
           <div>
             <h1>No Articles Found</h1>
-            <p>Please enter at least one search parameter to search for articles. If no results show, you can loosen the search by removing parameters.</p>
+            <p>Please enter at least one search parameter to search for articles. If no results show, you can loosen the search by removing parameters. Tip: If searching for news from a foreign country, you can right click anywhere on the website and select "translate".</p>
           </div>
         ) : (
           <div>

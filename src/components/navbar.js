@@ -7,7 +7,7 @@ function NavBar() {
         <div className='navbar'>
             <div>
                 <Link to="/" className='navitem brand'>
-                    📰 Country News App
+                    📰 NewsLy
                 </Link>
             </div>
             <div className='right-nav'>

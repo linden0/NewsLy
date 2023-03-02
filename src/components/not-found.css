@@ -1,0 +1,13 @@
+.frown {
+  width: 20%;
+  height: 20%;
+  margin-left: 40vw;
+  margin-top: 7vh;
+}
+
+.not-found {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: red;
+}

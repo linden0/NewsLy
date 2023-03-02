@@ -10,7 +10,7 @@
 .brand {
     font-size: 25px;
     font-weight: 900;
-    margin-left: calc(45vw - 350px);
+    margin-left: 25vw;
 }
 
 .navitem {
@@ -25,5 +25,14 @@
     flex-direction: row;
     justify-content: space-between;
     width: 15%;
-    margin-right: 30vw;
+    margin-right: 25vw;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.gdsc {
+    display: flex;
+    flex-direction: row;
 }
