@@ -1,6 +1,8 @@
 .home {
     background-color: #0B4F6C;
     height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: row;
 }
 
 .center {
@@ -11,18 +13,35 @@
     max-width: 40%;
 }
 
+.home-items {
+    margin-right: 25vw;
+    text-align: center;
+}
+
+.home-items h1 {
+    font-size: 40px;
+}
+
+.home-items p {
+    font-size: 20px;
+}
+
 .left-graphic {
-    float: left;
-    width: 45%;
-    text-align: right;
-    margin-top: 27vh;
+    width: 38%;
+    padding-top: 25vh;
+}
+
+.left-graphic img {
+    margin-left: calc(100% - 350px);
+    margin-right: 0;
 }
 
 .right-intro {
-    float: right;
-    width: 50%;
+    width: 62%;
+    margin-left: 25px;
     margin-top: 30vh;
 }
+
 
 .gray {
     color: rgb(70, 70, 70);
