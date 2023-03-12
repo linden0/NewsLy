@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/NewsLy/static/css/main.42458af7.css",
+    "main.js": "/NewsLy/static/js/main.08a3c8b1.js",
+    "static/media/globe.png": "/NewsLy/static/media/globe.17270eeb6671808db0e4.png",
+    "static/media/gdsc_banner.png": "/NewsLy/static/media/gdsc_banner.b66c73a9c8ebcd44d959.png",
+    "index.html": "/NewsLy/index.html",
+    "main.42458af7.css.map": "/NewsLy/static/css/main.42458af7.css.map",
+    "main.08a3c8b1.js.map": "/NewsLy/static/js/main.08a3c8b1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42458af7.css",
+    "static/js/main.08a3c8b1.js"
+  ]
+}
