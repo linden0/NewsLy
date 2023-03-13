@@ -13,10 +13,10 @@ function App() {
     <div>
       <NavBar/>
       <Routes>
-        <Route exact path="/" element={<Home/>}/>
-        <Route exact path="/api" element={<API />}/>
-        <Route exact path="/search" element={<Search/>}/>
-        <Route exact path="/about" element={<About/>}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/api" element={<API />}/>
+        <Route path="/search" element={<Search/>}/>
+        <Route path="/about" element={<About/>}/>
 
         <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
